@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <meta charset="utf-8">
 <title>Show looking position</title>
 <script src="http://localhost:6556/eyetribe.js"></script>
@@ -8,8 +8,8 @@
 
 <style>
   body {
-    color: #fff;
-    background-color: #000;
+   /* color: #fff;*/
+   /* background-color: #000;*/
   }
   #dump {
     color: #777;
@@ -25,19 +25,89 @@
     height: 50px;
     border: solid 1px #f00
   }
+
+  .screenDiv{
+    height: 100vh;
+    background-color: #b4b472;
+  }
 </style>
+
+<div class="screenDiv">
+<div class="circleBase type1" id="circle"></div>
+
+</div>
+<style>
+body{
+  overflow-y: hidden;
+  margin: 0px;
+}
+  .circleBase {
+    border-radius: 50%;
+   /* behavior: url(PIE.htc);*/ /* remove if you don't care about IE8 */
+    position: absolute;
+  }
+
+  .type1 {
+    width: 50px;
+    height: 50px;
+    background: yellow;
+    border: 3px solid red;
+    position:fixed;
+  }
+</style>
+
 
 <script>
 (function() {
 
   EyeTribe.loop(function(frame) {
-    dump.innerHTML = frame.dump();
-    debugger
-    locateEyeImage(leftEye, frame.leftEye);
-    locateEyeImage(rightEye, frame.rightEye);
-    locateCursor(frame);
+    animateDiv([frame.average.x,frame.average.y]);
   })
 
 
 })();
+
+
+
+function makeNewPosition(){
+
+  // Get viewport dimensions (remove the dimension of the div)
+  var h = $(window).height() - 50;
+  var w = $(window).width() - 50;
+
+  var nh = Math.floor(Math.random() * h);
+  var nw = Math.floor(Math.random() * w);
+
+  return [nh,nw];
+
+}
+
+function animateDiv(newq){
+/*  var oldq = $('#circle').offset();
+  var speed = calcSpeed([oldq.top, oldq.left], newq);
+
+  $('#circle').animate({ left: newq[1],top: newq[0] }, speed, function(){
+    animateDiv();
+  });*/
+  $('#circle').css({'left':newq[0],'top':newq[1]})
+};
+
+function calcSpeed(prev, next) {
+
+  var x = Math.abs(prev[1] - next[1]);
+  var y = Math.abs(prev[0] - next[0]);
+
+  var greatest = x > y ? x : y;
+
+  var speedModifier = 0.1;
+
+  var speed = Math.ceil(greatest/speedModifier);
+
+  return speed;
+
+}
+
+
+
+
 </script>

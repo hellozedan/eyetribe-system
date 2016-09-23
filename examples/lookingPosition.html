@@ -40,7 +40,7 @@
 
   EyeTribe.loop(function(frame) {
     dump.innerHTML = frame.dump();
-
+    debugger
     locateEyeImage(leftEye, frame.leftEye);
     locateEyeImage(rightEye, frame.rightEye);
     locateCursor(frame);

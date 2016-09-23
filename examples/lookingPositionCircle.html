@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+<title>Show looking position</title>
+<script src="http://localhost:6556/eyetribe.js"></script>
+
+
+
+<style>
+  body {
+    color: #fff;
+    background-color: #000;
+  }
+  #dump {
+    color: #777;
+  }
+  .eye {
+    position: absolute;
+    width: 100px;
+    height: 60px;
+  }
+  #cursor {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: solid 1px #f00
+  }
+</style>
+
+<script>
+(function() {
+
+  EyeTribe.loop(function(frame) {
+    dump.innerHTML = frame.dump();
+    debugger
+    locateEyeImage(leftEye, frame.leftEye);
+    locateEyeImage(rightEye, frame.rightEye);
+    locateCursor(frame);
+  })
+
+
+})();
+</script>

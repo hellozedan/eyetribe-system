@@ -1,113 +1,324 @@
 <!DOCTYPE html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <meta charset="utf-8">
-<title>Show looking position</title>
+<title>ALS</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<!-- Bootstrap Core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom Fonts -->
+<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+      rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+      rel='stylesheet' type='text/css'>
+<!-- Plugin CSS -->
+<link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+<!-- Theme CSS -->
+<link href="css/creative.min.css" rel="stylesheet">
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
 <script src="http://localhost:6556/eyetribe.js"></script>
 
 
-
 <style>
-  body {
-   /* color: #fff;*/
-   /* background-color: #000;*/
-  }
-  #dump {
-    color: #777;
-  }
-  .eye {
-    position: absolute;
-    width: 100px;
-    height: 60px;
-  }
-  #cursor {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border: solid 1px #f00
-  }
+    body {
+        /* color: #fff;*/
+        /* background-color: #000;*/
+    }
 
-  .screenDiv{
-    height: 100vh;
-    background-color: #b4b472;
-  }
+    #dump {
+        color: #777;
+    }
+
+    .eye {
+        position: absolute;
+        width: 100px;
+        height: 60px;
+    }
+
+    #cursor {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border: solid 1px #f00
+    }
+
+    .screenDiv {
+        height: 100%;
+        background-color: #00b4a2;
+    }
+
+    .screenDivInside {
+
+        margin-left: 15%;
+        height: 100vh;
+        width: 70%;
+        background-color: #00b42c;
+    }
+
+    .screenRow {
+        height: 33.333333333%;
+        margin: 0px;
+
+    }
+
+    .screenCol {
+        border: 1px solid black;
+        height: 100%;
+        position: relative;
+        padding: 0px;
+    }
+
+    body {
+        overflow-y: hidden;
+        margin: 0px;
+    }
+
+    .circleBase {
+        z-index: 100000;
+        border-radius: 50%;
+        /* behavior: url(PIE.htc);*/ /* remove if you don't care about IE8 */
+        position: absolute;
+    }
+
+    .type1 {
+        width: 70px;
+        height: 70px;
+        height: 70px;
+        background: yellow;
+        border: 3px solid red;
+        position: fixed;
+    }
+
+    .containt {
+        display: block;
+        height: 100%;
+        width: 100%;
+        background-color: #ffbf21;
+        position: absolute;
+        top: 0px;
+        display: none;
+        text-align: center;
+    }
+    .containt span {
+        position: relative;
+        top: 25%;
+        font-size: 25px;
+    }
 </style>
 
 <div class="screenDiv">
-<div class="circleBase type1" id="circle"></div>
+    <div class="screenDivInside">
+        <div class="circleBase type1" id="circle"><span id="seconds">3</span></div>
+        <div class="screenRow row ">
+            <div id="a" class="col-md-4 screenCol">
+                <img src="./cards/listentomusic2.jpg" width="100%" height="100%"/>
+                <div class="containt">
+                    <span>i want to eat</span>
+                </div>
 
+            </div>
+            <div id="b" class="col-md-4 screenCol">
+                <img src="./cards/drink.jpg" width="100%" height="100%"/>
+                <div class="containt">
+                    <span>i want to eat</span>
+                </div>
+            </div>
+            <div id="c" class="col-md-4 screenCol">
+                <img src="./cards/eat.jpg" width="100%" height="100%"/>
+                <div class="containt">
+                    <span>i want to eat</span>
+                </div>
+            </div>
+        </div>
+        <div class="row screenRow">
+            <div id="d" class="col-md-4 screenCol">
+                <img src="./cards/getoutofbed.jpg" width="100%" height="100%"/>
+                <div class="containt">
+                    <span>i want to eat</span>
+                </div>
+            </div>
+            <div id="e" class="col-md-4 screenCol">
+                <img src="./cards/asleep.jpg" width="100%" height="100%"/>
+                <div class="containt">
+                    <span>i want to eat</span>
+                </div>
+            </div>
+            <div id="f" class="col-md-4 screenCol">
+                <img src="./cards/sneeze.jpg" width="100%" height="100%"/>
+                <div class="containt">
+                    <span>i want to eat</span>
+                </div>
+            </div>
+        </div>
+        <div class="row screenRow">
+            <div id="g" class="col-md-4 screenCol">
+                <img src="./cards/lamp.jpg" width="100%" height="100%"/>
+                <div class="containt">
+                    <span>i want to eat</span>
+                </div>
+            </div>
+            <div id="h" class="col-md-4 screenCol">
+                <img src="./cards/takemedicinepills_c_l.jpg" width="100%" height="100%"/>
+            </div>
+            <div id="i" class="col-md-4 screenCol">
+                <img src="./cards/sitontoilet.jpg" width="100%" height="100%"/>
+                <div class="containt">
+                    <span>i want to eat</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<style>
-body{
-  overflow-y: hidden;
-  margin: 0px;
-}
-  .circleBase {
-    border-radius: 50%;
-   /* behavior: url(PIE.htc);*/ /* remove if you don't care about IE8 */
-    position: absolute;
-  }
-
-  .type1 {
-    width: 50px;
-    height: 50px;
-    background: yellow;
-    border: 3px solid red;
-    position:fixed;
-  }
-</style>
-
-
 <script>
-(function() {
+    (function () {
+        var message = "";
 
-  EyeTribe.loop(function(frame) {
-    animateDiv([frame.average.x,frame.average.y]);
-  })
+        function executeChoice() {
+//            if (message == 'g') {
+                $.get("http://192.168.2.12:4000/api/on", function (data) {
+                });
+//            }
+            if (message == 'e') {
 
+            }
+        }
 
-})();
+        function GetAvg(elmt) {
+            var sum = 0;
+            for (var i = 0; i < elmt.length; i++) {
+                sum += parseInt(elmt[i]); //don't forget to add the base
+            }
 
+            var avg = sum / elmt.length;
+            return avg;
+        }
 
-
-function makeNewPosition(){
-
-  // Get viewport dimensions (remove the dimension of the div)
-  var h = $(window).height() - 50;
-  var w = $(window).width() - 50;
-
-  var nh = Math.floor(Math.random() * h);
-  var nw = Math.floor(Math.random() * w);
-
-  return [nh,nw];
-
-}
-
-function animateDiv(newq){
-/*  var oldq = $('#circle').offset();
-  var speed = calcSpeed([oldq.top, oldq.left], newq);
-
-  $('#circle').animate({ left: newq[1],top: newq[0] }, speed, function(){
-    animateDiv();
-  });*/
-  $('#circle').css({'left':newq[0],'top':newq[1]})
-};
-
-function calcSpeed(prev, next) {
-
-  var x = Math.abs(prev[1] - next[1]);
-  var y = Math.abs(prev[0] - next[0]);
-
-  var greatest = x > y ? x : y;
-
-  var speedModifier = 0.1;
-
-  var speed = Math.ceil(greatest/speedModifier);
-
-  return speed;
-
-}
+        var limit = 100;
+        var xLimit = {};
+        var yLimit = {};
+        var firstTime = true;
 
 
+//      var screenDiv= $('.screenDiv')[0];//.css({'width': screen.width, 'height': screen.height});
+        var height = $('.screenDiv').height();
+        var width = $('.screenDiv').width();
+        var screenWidth = screen.width;
+        var screenHeight = screen.height;
+        var newCoords = {x: 0, y: 0}
+        var oldCoords = {x: 0, y: 0}
+        var count = 0;
+        var newq = [newCoords.x, newCoords.y];
+        var XValues = [];
+        var YValues = [];
+        EyeTribe.loop(function (frame) {
+
+
+
+//                var newq = [GetAvg(XValues), GetAvg(YValues)];
+            var newq = [(frame.average.x / screenWidth) * width - 50, (frame.average.y / screenHeight) * height - 50];
+
+//                if (firstTime) {
+//                    animateDiv(newq);
+//                }
+//                else if (newq[0] >= xLimit.start && newq[0] <= xLimit.end && newq[1] >= yLimit.start && newq[1] <= yLimit.end) {
+//                    var timeinterval = setInterval(updateClock, 2000);
+//
+//                    function updateClock() {
+//
+//                        if ($('#seconds').text() <= 0) {
+//
+//                            clearInterval(timeinterval);
+//                            $("#seconds").text(3);
+//                            alert("a")
+//                        } else {
+//                            $("#seconds").text($('#seconds').text() - 1);
+//                        }
+//                    }
+//
+//                } else {
+//                    animateDiv(newq)
+//                }
+            animateDiv(newq)
+
+        })
+
+        var chosen;
+        var isElementChanged = false;
+        var eyeTime = new Date();
+
+        function animateDiv(newq) {
+//            if (firstTime) {
+//                xLimit.start = newq[0] - limit;
+//                xLimit.end = newq[0] + limit;
+//                yLimit.start = newq[1] - limit;
+//                yLimit.end = newq[1] + limit;
+//                firstTime = false;
+//            }
+//            if (newq[0] >= xLimit.start && newq[0] <= xLimit.end && newq[1] >= yLimit.start && newq[1] <= yLimit.end) {
+//
+//            } else {
+//                xLimit.start = newq[0] - limit;
+//                xLimit.end = newq[0] + limit;
+//                yLimit.start = newq[1] - limit;
+//                yLimit.end = newq[1] + limit;
+//                $('#circle').css({'left': newq[0], 'top': newq[1]})
+//            }
+            $(".screenCol").each(function (index) {
+                if (newq[1] >= $(this).position().top && newq[1] <= $(this).position().top + $(this).height()
+                        && newq[0] >= $(this).position().left && newq[0] <= $(this).position().left + $(this).width()
+                ) {
+                    if (!chosen)
+                        chosen = $(this);
+                    else if (chosen[0].id != $(this)[0].id) {
+
+                        chosen.css('background-color', '#b4b472')
+                        $(chosen[0].childNodes[3]).hide()
+                        message = $(this)[0].id;
+                        chosen = $(this);
+                        isElementChanged = true;
+                        eyeTime = new Date();
+
+                    }
+                    else {
+                        var newEyeTime = new Date();
+                        var mSDiff = newEyeTime.getTime() - eyeTime.getTime();
+                        if (mSDiff > 2000) {
+                            executeChoice(message);
+                            eyeTime = new Date();
+
+                        }
+                        isElementChanged = false;
+                    }
+                    if (!isElementChanged) {
+                        $($(this)[0].childNodes[3]).show()
+                        $(this).css('background-color', 'blue');
+                        isElementChanged = true;
+                        console.log('111')
+                    }
+
+
+                }
+                //console.log( index + ": " + $( this ).position() );
+            });
+            $('#circle').css({'left': newq[0], 'top': newq[1]})
+
+        };
+
+    })();
 
 
 </script>
+

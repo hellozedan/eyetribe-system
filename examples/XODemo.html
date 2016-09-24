@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+<title>Show looking position</title>
+<script src="http://localhost:6556/eyetribe.js"></script>
+
+
+<style>
+    #circle {
+        width: 50px;
+        height: 50px;
+        -webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+        border-radius: 25px;
+        background: red;
+        position: absolute;
+    }
+
+    body {
+        color: #fff;
+        background-color: #000;
+    }
+
+    #dump {
+        color: #777;
+    }
+
+    .eye {
+        position: absolute;
+        width: 100px;
+        height: 60px;
+    }
+
+    #cursor {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border: solid 1px #f00
+    }
+</style>
+<body>
+
+<div id="circle"></div>
+
+<script>
+    (function () {
+
+        var div = document.getElementById('circle');
+        EyeTribe.loop(function (frame) {
+//            setTimeout(function(){
+
+                div.style.left = frame.average.x+"px";
+                div.style.top = frame.average.y+"px";
+//            }, 0);
+
+
+//    dump.innerHTML = frame.dump();
+//
+//    locateEyeImage(leftEye, frame.leftEye);
+//    locateEyeImage(rightEye, frame.rightEye);
+//            console.log(frame)
+            //locateCursor(frame);
+        })
+
+
+    })();
+</script>
+</body>
